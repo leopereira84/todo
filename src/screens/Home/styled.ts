@@ -52,15 +52,23 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttomText: {
-    fontSize: 12,
+    fontSize: 16,
     fontFamily: 'Inter_700Bold',
     color: '#F2F2F2',
-    width: 18,
-    height: 18,
+    width: 24,
+    height: 24,
     borderRadius: 20,
     borderColor: '#F2F2F2',
     borderWidth: 1,
     textAlign: 'center',
+  },
+  taskHeaderView: {
+    flexDirection: 'row',
+    marginBottom: 20,
+    justifyContent: 'space-between',
+    borderBottomWidth: 0.2,
+    borderBottomColor: '#F2F2F2',
+    paddingBottom: 10
   },
   taskHeaderCreated: {
     fontFamily: 'Inter_700Bold',
@@ -84,6 +92,11 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     textAlign: 'center',
     marginLeft: 5
+  },
+  taskList: {
+    width: '100%',
+    alignSelf: 'center',
+    padding: 10
   },
   taskListEmptyImage: {
     width: 56,
