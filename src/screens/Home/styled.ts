@@ -29,16 +29,15 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignContent: 'space-between',
     borderWidth: 1,
-    marginBottom: 20
+    marginBottom: 30
   },
   boxInput: {
-    lineHeight: 140,
+    flex: 1,
     fontFamily: 'Inter_400Regular',
     fontSize: 14,
     color: '#F2F2F2',
     backgroundColor: '#262626',
     borderRadius: 5,
-    width: 300,
     height: 56,
     padding: 16,
   },
@@ -52,23 +51,24 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttomText: {
-    fontSize: 16,
+    fontSize: 12,
     fontFamily: 'Inter_700Bold',
     color: '#F2F2F2',
-    width: 24,
-    height: 24,
+    width: 20,
+    height: 20,
     borderRadius: 20,
     borderColor: '#F2F2F2',
     borderWidth: 1,
     textAlign: 'center',
   },
   taskHeaderView: {
+    width: '100%',
     flexDirection: 'row',
-    marginBottom: 20,
+    marginBottom: 10,
     justifyContent: 'space-between',
     borderBottomWidth: 0.2,
     borderBottomColor: '#F2F2F2',
-    paddingBottom: 10
+    paddingBottom: 10,
   },
   taskHeaderCreated: {
     fontFamily: 'Inter_700Bold',

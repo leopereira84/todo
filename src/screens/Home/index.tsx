@@ -1,5 +1,5 @@
 import { View, Text, Image, FlatList, Alert, TextInput, TouchableOpacity } from  'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { styles } from './styled';
 import { Task } from '../../components/Task';
@@ -11,18 +11,7 @@ export type TaskProps = {
 
 export function Home () {
 
-  const [tasks, setTasks] = useState<TaskProps[]>([
-      { task: "Integer urna interdum massa libero auctor neque turpis turpis semper.", status: 1 },
-      { task: "String 2 na interdum massa libero auctor neque turpis turpis semper.", status: 0 },
-      { task: "Integer 3 na interdum massa libero auctor neque turpis turpis semper.", status: 0 },
-      { task: "String 4 na interdum massa libero auctor neque turpis turpis semper.", status: 0 },
-      { task: "Integer 5 na interdum massa libero auctor neque turpis turpis semper.", status: 1 },
-      { task: "String 6 na interdum massa libero auctor neque turpis turpis semper.", status: 0 },
-      { task: "Integer 7 na interdum massa libero auctor neque turpis turpis semper.", status: 1 },
-      { task: "String 8 na interdum massa libero auctor neque turpis turpis semper.", status: 0 },
-      { task: "Integer 9 na interdum massa libero auctor neque turpis turpis semper.", status: 0 },
-      { task: "String 0 na interdum massa libero auctor neque turpis turpis semper.", status: 0 },
-  ]);
+  const [tasks, setTasks] = useState<TaskProps[]>([]);
 
   const [newTask, setNewTask] = useState('');
 
@@ -41,7 +30,7 @@ export function Home () {
   }
 
   function handleTaskRemove(description: string) {
-    Alert.alert("Remover", `Remover tarefa ${description} ?`, [
+    Alert.alert("Remover Tarefa ?", description, [
       {
         text: "Sim",
         onPress: () => setTasks(prevState => prevState.filter(item => item.task !== description))
@@ -82,9 +71,21 @@ export function Home () {
       </View>
 
       <View style={{ flex: 1, width: '100%' }}>
+
+        <View style={styles.taskHeaderView}>
+          <View style={{ flexDirection: 'row' }}>
+            <Text style={styles.taskHeaderCreated}>Criadas</Text>
+            <Text style={styles.taskHeaderCounter}>{tasks.filter(({status}) => status === 0).length}</Text>
+          </View>
+          <View style={{ flexDirection: 'row' }}>
+            <Text style={styles.taskHeaderConcluded}>Concluídas</Text>
+            <Text style={styles.taskHeaderCounter}>{tasks.filter(({status}) => status === 1).length}</Text>
+          </View>
+        </View>
+
         <FlatList
           style={styles.taskList}
-          data={tasks}
+          data={tasks.sort((a, b) => a.status < b.status ? -1 : 1)}
           keyExtractor={item => item.task}
           showsVerticalScrollIndicator={false}
 
@@ -101,19 +102,6 @@ export function Home () {
                 Crie tarefas e organize seus itens a fazer.
               </Text>
             </>
-          }
-
-          ListHeaderComponent={
-            <View style={styles.taskHeaderView}>
-              <View style={{ flexDirection: 'row' }}>
-                <Text style={styles.taskHeaderCreated}>Criadas</Text>
-                <Text style={styles.taskHeaderCounter}>{tasks.filter(({status}) => status === 0).length}</Text>
-              </View>
-              <View style={{ flexDirection: 'row' }}>
-                <Text style={styles.taskHeaderConcluded}>Concluídas</Text>
-                <Text style={styles.taskHeaderCounter}>{tasks.filter(({status}) => status === 1).length}</Text>
-              </View>
-            </View>
           }
 
           renderItem={({ item }) => (

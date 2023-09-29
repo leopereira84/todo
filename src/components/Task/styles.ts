@@ -16,10 +16,10 @@ export const styles = StyleSheet.create({
     height: 24,
     borderRadius: 20,
     borderColor: '#4EA8DE',
-    color: '#262626',
     borderWidth: 2,
     textAlign: 'center',
-    marginRight: 15
+    marginRight: 15,
+    fontSize: 0,
   },
   taskListChecked: {
     fontSize: 12,
